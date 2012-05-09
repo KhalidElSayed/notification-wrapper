@@ -1,0 +1,20 @@
+# temporary files
+*~
+
+# class files
+*.class
+
+# local settings
+.settings/
+
+# binaries
+bin/
+
+# generated files
+gen/
+
+# exported files
+jars/
+
+#imported libs
+libs/
