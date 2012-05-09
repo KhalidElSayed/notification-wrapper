@@ -2,7 +2,7 @@
 
 __A convenient wrapper for android.app.Notification__
 
-This is a convenient helper to show notifications in Android. It is used by CalDAV-Sync & CardDAV-Sync for Android.
+This is a convenient helper to show notifications in Android.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ You can set an Intent to launch when the notification is opened:
 
 ## TODO
 
-* Add all missing Notification features (i.e. LEDs, sounds, vibrate...)
+* Add all missing Notification features (i.e. LEDs, sounds, vibrate ...)
 
 ## License
 
