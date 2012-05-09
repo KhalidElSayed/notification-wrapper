@@ -43,6 +43,11 @@ import android.content.pm.PackageManager;
 public class NotificationWrapper
 {
 	/**
+	 * Notification id.
+	 */
+	public final static int AUTO_ID = -1;
+
+	/**
 	 * Next notification id to use starting at some random value.
 	 */
 	private static int sNotificationId = 989130213;
@@ -83,12 +88,14 @@ public class NotificationWrapper
 	 * 
 	 * @param context
 	 *            A {@link Context}.
+	 * @param notificationId
+	 *            A notification id or {@code AUTO_ID} if you don't care about the id.
 	 */
-	public NotificationWrapper(Context context)
+	private NotificationWrapper(Context context, int notificationId)
 	{
 		mContext = context;
 		mNotification = new android.app.Notification();
-		mNotificationId = newNotificationId();
+		mNotificationId = notificationId == AUTO_ID ? newNotificationId() : notificationId;
 
 		// show notification instantly by default
 		mNotification.when = System.currentTimeMillis();
@@ -112,7 +119,24 @@ public class NotificationWrapper
 	 */
 	public NotificationWrapper(Context context, CharSequence text)
 	{
-		this(context);
+		this(context, AUTO_ID);
+		setText(text);
+	}
+
+
+	/**
+	 * Create new notification and initialize it with some default values and the notification text {@code text}.
+	 * 
+	 * @param context
+	 *            A {@link Context}.
+	 * @param notificationId
+	 *            A notification id or {@code AUTO_ID} if you don't care about the id.
+	 * @param text
+	 *            The notification text.
+	 */
+	public NotificationWrapper(Context context, int notificationId, CharSequence text)
+	{
+		this(context, notificationId);
 		setText(text);
 	}
 
@@ -122,12 +146,14 @@ public class NotificationWrapper
 	 * 
 	 * @param context
 	 *            A {@link Context}.
+	 * @param notificationId
+	 *            A notification id or {@code AUTO_ID} if you don't care about the id.
 	 * @param textRes
 	 *            The notification text resource id.
 	 */
-	public NotificationWrapper(Context context, int textRes)
+	public NotificationWrapper(Context context, int notificationId, int textRes)
 	{
-		this(context);
+		this(context, notificationId);
 		setText(textRes);
 	}
 
